@@ -257,14 +257,18 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+    awful.key({ modkey,           }, "[",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
+    awful.key({ modkey,           }, "]",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
     -- awful.key({ modkey, 'Control' }, 't', function (c) awful.titlebar.toggle(c) end,
     --     {description = 'toggle title bar', group = 'client'}),
+    awful.key({ modkey,           }, "Right",     function () awful.tag.incmwfact( 0.05)    end),
+    awful.key({ modkey,           }, "Left",     function () awful.tag.incmwfact(-0.05)    end),
+    awful.key({ modkey,           }, "Down",     function () awful.client.incwfact( -0.05)    end),
+    awful.key({ modkey,           }, "Up",     function () awful.client.incwfact(0.05)    end),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -558,7 +562,7 @@ client.connect_signal("request::titlebars", function(c)
 
    awful.titlebar(c) : setup {
        { -- Left
-           awful.titlebar.widget.iconwidget(c),
+           -- awful.titlebar.widget.iconwidget(c),
            buttons = buttons,
            layout  = wibox.layout.fixed.horizontal
        },
@@ -571,17 +575,15 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
+            -- awful.titlebar.widget.floatingbutton (c),
+            -- awful.titlebar.widget.maximizedbutton(c),
+            -- awful.titlebar.widget.stickybutton   (c),
+            -- awful.titlebar.widget.ontopbutton    (c),
+            -- awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
     }
-
-    awful.titlebar.hide(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -594,9 +596,9 @@ client.connect_signal("unfocus", function(c) c.border_color = normal_colour end)
 -- }}}
 
 -- Gaps
-beautiful.useless_gap = 5
+beautiful.useless_gap = 10
 
--- Autostart Nitrogen
+-- Autostart Nitrogen, polybar, and compton
 awful.spawn.with_shell("nitrogen --set-zoom-fill --restore")
-awful.spawn.with_shell("~/runpoly")
+awful.spawn.with_shell("~/.config/polybar/launch.sh")
 awful.spawn.with_shell("compton")

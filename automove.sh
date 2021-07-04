@@ -9,4 +9,6 @@ cp -r ~/.config/awesome .
 cp -r ~/.config/polybar .
 cp -r ~/.config/rofi .
 cp -r ~/.config/kitty .
-cp ~/.bashrc bashrc
+mkdir cmus
+cp /usr/share/cmus/gruvbox-green.theme ./cmus
+cp ~/.bashrc .bashrc

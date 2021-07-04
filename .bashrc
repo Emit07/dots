@@ -101,6 +101,7 @@ alias h="cd ~"
 alias c="clear"
 alias ds="cd ~/Documents"
 alias matrix="cmatrix -s -b"
+alias wall="nitrogen --set-zoom-fill --random ~/Wallpapers/"
 
 # some more ls aliases
 alias ll='ls -alF'
