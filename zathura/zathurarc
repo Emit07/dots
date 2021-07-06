@@ -1,0 +1,28 @@
+set default-fg "#ebdbb2"
+set default-bg "#282828"
+
+set statusbar-bg "#141414"
+set statusbar-fg "#ebdbb2" 
+
+set inputbar-bg "#1d2021"
+set inputbar-fg "#ebdbb2"
+
+set highlight-color "#98971a"
+set highlight-active-color "#689d6a"
+
+# --------
+# KEYBINDS
+# --------
+
+map t toggle_statusbar
+
+# ----------
+# RECOLORING
+# ----------
+
+set recolor true
+
+# Colours are inverted here to create a "darkmode"
+# You can comment this section out as it is mostly intented for reading
+set recolor-darkcolor "#ebdbb2"
+set recolor-lightcolor "#282828"
