@@ -54,7 +54,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 local focus_colour = "#98971a"
-local normal_colour = "#282828"
+local normal_colour = "#ebdbb2"
 
 local border_size_lc = 2
 
@@ -345,7 +345,10 @@ globalkeys = gears.table.join(
     -- Prompt
     awful.key({ modkey },            "space",     function () 
     awful.util.spawn("rofi -show drun -theme gruvbox-custom") end,
-              {description = "run rofi", group = "launcher"}),
+              {description = "run rofi for software", group = "launcher"}),
+    awful.key({ modkey },            "r",         function ()
+    awful.util.spawn("rofi -show run -theme gruvbox-custom") end,
+              {description = "run rofi for command execution", group  = "launcher"}),
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {

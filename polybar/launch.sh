@@ -1,11 +1,12 @@
-#!/bin/env bash
+#!/bin/bash
 
-# Terminate already running bars
+# Terminate already running bar instances
 killall -q polybar
 
-# Wait until bars have been terminated
+# Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# Launch Polybar
+# polybar -rq dummy & 
 polybar mainscreen &
-polybar secondscreen &
+
+echo "Polybar launched..."
